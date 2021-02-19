@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/hgawera/CloudComputing/issues"
   },
-  "homepage": "https://github.com/hgawera/CloudComputing#readme"
+  "homepage": "https://github.com/hgawera/CloudComputing#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.1.1"
+  }
 }
