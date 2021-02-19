@@ -5,10 +5,23 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>MOOZ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+    <!-- <script src='main.js'></script> -->
 </head>
 <body>
-    <h1>Welcome to our Mooz app</h1>
-</body>
+    <div id="room-selection-container" class="centered">
+        <h1>Welcome to our Mooz app</h1>
+        <label>Enter the number of the room you want to connect</label>
+        <input id="room-input" type="text" />
+        <button id="connect-button">CONNECT</button>
+    </div>
+
+    <div id="video-chat-container" class="video-position" style="display: none">
+        <video id="local-video" autoplay="autoplay"></video>
+        <video id="remote-video" autoplay="autoplay"></video>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/client.js"></script>
+    </body>
 </html>
