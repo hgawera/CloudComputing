@@ -1,43 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=”en”>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta charset=”UTF-8” />
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0” />
+    <title>WebRTC</title>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <style type=”text/css”>
+      body {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .centered {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .video-position {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #video-chat-container {
+        width: 100%;
+        background-color: black;
+      }
+
+      #local-video {
+        position: absolute;
+        height: 30%;
+        width: 30%;
+        bottom: 0px;
+        left: 0px;
+      }
+
+      #remote-video {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id=”room-selection-container” class=”centered”>
+      <h1>WebRTC video conference</h1>
+      <label>Enter the number of the room you want to connect</label>
+      <input id=”room-input” type=”text” />
+      <button id=”connect-button”>CONNECT</button>
+    </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <div id=”video-chat-container” class=”video-position” style=”display: none”>
+      <video id=”local-video” autoplay=”autoplay”></video>
+      <video id=”remote-video” autoplay=”autoplay”></video>
+    </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script src=”/socket.io/socket.io.js”></script>
+    <!-- <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script> -->
+    <script type=”text/javascript” src=”client.js”></script>
   </body>
 </html>
