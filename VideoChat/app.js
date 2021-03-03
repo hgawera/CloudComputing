@@ -25,16 +25,24 @@ io.on('connection', (socket) => {
       socket.join(roomId)
       socket.emit('room_created', roomId)
       clientsDict[roomId] = 1
-    } else if (roomClients == 1) {
+    } else {
       console.log(`Joining room ${roomId} and emitting room_joined socket event`)
       socket.join(roomId)
       socket.emit('room_joined', roomId)
       clientsDict[roomId] = clientsDict[roomId] + 1
-    } else {
-      console.log(`Can't join room ${roomId}, emitting full_room socket event`)
-      socket.emit('full_room', roomId)
-    }
+    } 
   })
+
+//   else if (roomClients == 1) {
+//     console.log(`Joining room ${roomId} and emitting room_joined socket event`)
+//     socket.join(roomId)
+//     socket.emit('room_joined', roomId)
+//     clientsDict[roomId] = clientsDict[roomId] + 1
+//   } else {
+//     console.log(`Can't join room ${roomId}, emitting full_room socket event`)
+//     socket.emit('full_room', roomId)
+//   }
+// })
 
   // These events are emitted to all the sockets connected to the same room except the sender.
   socket.on('start_call', (roomId) => {
