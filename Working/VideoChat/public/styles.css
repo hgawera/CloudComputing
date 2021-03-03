@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-size: 20px;
+}
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-position {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#video-chat-container {
+    width: 100%;
+    background-color: black;
+    text-align: center
+}
+
+#local-video {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px; 
+}
+
+#remote-video {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px; 
+}
