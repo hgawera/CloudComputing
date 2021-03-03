@@ -5,6 +5,8 @@ const io = require('socket.io')(server)
 
 app.use('/', express.static('public'))
 
+module.exports = app;
+
 let clientsDict = {};
 
 io.on('connection', (socket) => {
