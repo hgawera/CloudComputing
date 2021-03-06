@@ -68,8 +68,9 @@ function joinRoom(room) {
 }
 
 function showVideoConference() {
-  roomSelectionContainer.style = 'display: none'
-  videoChatContainer.style = 'display: block'
+  roomSelectionContainer.style.display = 'none'
+  videoChatContainer.style.display = 'block'
+  document.getElementById("entire-page").innerHTML = '';
 }
 
 async function setLocalStream(mediaConstraints) {
