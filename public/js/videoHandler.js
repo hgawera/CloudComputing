@@ -87,6 +87,10 @@ async function setLocalStream(mediaConstraints) {
   localVideoComponent.srcObject = stream
 }
 
+socket.on("close", async() => {
+  removeRemoteStream();
+})
+
 
 // Creating P2P connection
 socket.on('start_call', async () => {
@@ -131,6 +135,14 @@ socket.on('webrtc_ice_candidate', (event) => {
     candidate: event.candidate,
   })
   rtcPeerConnection.addIceCandidate(candidate)
+
+  rtcPeerConnection.oniceconnectionstatechange = function() {
+    if(rtcPeerConnection.iceConnectionState == 'disconnected') {
+        console.log('Peer disconnected');
+        removeRemoteStream();
+        socket.emit("peerDisconnected", roomId);
+    }
+  }
 })
 
 function addLocalTracks(rtcPeerConnection) {
@@ -138,6 +150,7 @@ function addLocalTracks(rtcPeerConnection) {
     rtcPeerConnection.addTrack(track, localStream)
   })
 }
+
 
 async function createOffer(rtcPeerConnection) {
   let sessionDescription
@@ -172,11 +185,14 @@ async function createAnswer(rtcPeerConnection) {
 }
 
 function setRemoteStream(event) {
-  console.log("Stream: ");
-  console.log(event.streams);
+  remoteVideoComponent.srcObject = event.streams[0];
+  remoteStream = event.stream;
+}
 
-  remoteVideoComponent.srcObject = event.streams[0]
-  remoteStream = event.stream
+function removeRemoteStream() {
+  rtcPeerConnection = new RTCPeerConnection(iceServers);
+  remoteVideoComponent.srcObject = null;
+  remoteStream = null;
 }
 
 function sendIceCandidate(event) {
