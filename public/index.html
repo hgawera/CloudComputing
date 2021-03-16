@@ -1,27 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>MOOZ</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <!-- <script src='react.js'></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mooz</title>
 </head>
 <body>
-    <div id="room-selection-container" class="centered">
-        <h1>Mooz</h1>
-        <label>Room ID</label>
-        <input id="room-input" type="text" />
-        <button id="connect-button">CONNECT</button>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Mooz.</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="join.html">Join</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
-    <div id="video-chat-container" class="video-position" style="display: none">
-        <video muted id="local-video" autoplay="autoplay"></video>
-        <video id="remote-video" autoplay="autoplay"></video>
-    </div>
+    <!--Sign up-->
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script defer type="text/javascript" src="/js/videoHandler.js"></script>
-    </body>
+    <section class="showcase">
+        <div class="container grid">
+            <div class="showcase-text">
+                <h1>Keep Collaborating!</h1>
+                <p>Build better relationships, solve business challenges, and meet happy with 
+                    the industry's best video meeting experience! Keep collaborating with team chat.
+                </p>
+                <a href="about.html" class="btn btn-outline">About us</a>
+            </div>
+
+            <div class="showcase-form card">
+                <h2>Make an account</h2>
+                <form action="">
+                    <div class="form-control">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="submit" value="Create" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div id="room-selection-container">
+        <div class="container">
+            <h3 class="stats-heading text-center my-1">
+                Simply enter a room ID to get started! Give the ID to your friends to join!
+            </h3>
+            <div id="room-selection-container">
+                <div class="grid grid-3 text-center my-4">
+                    <div>
+                        <i></i>
+                        <h3>Room ID</h3>
+                        <p class="text-secondary">Enter the Room ID</p>
+                    </div>
+                    <div>
+                        <i></i>
+                        <h3>Unlimited People</h3>
+                        <p class="text-secondary">Add as many people as you like</p>
+                    </div>
+    
+                    <div>
+                        <i></i>
+                        <h3>Invite your friends</h3>
+                        <p class="text-secondary">Simply tell them the Room ID</p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        </div>
+
+    </section>
+
+    <!--Cloud-->
+
+    <section class="cloud bg-primary my-2 py-2">
+        <div class="container grid">
+            <div class="text-center">
+                <h2 class="lg">Easily discover, share and edit ideas in Mooz!</h2>
+                <p class="lead my-1">Instantly go from group chat to video call with the touch of a button. Securely connect, access, share, and coauthor files in real time.</p>
+                <a href="about.html" class="btn btn-outline">Read More</a>
+            </div>
+            <img src="images/video3-removebg-preview.png" alt="">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Mooz
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="join.html">Join</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="https://github.com/hgawera/CloudComputing/tree/main/public"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
+
+
+

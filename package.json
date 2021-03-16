@@ -2,6 +2,11 @@
   "name": "webrtc-node-app",
   "version": "1.0.0",
   "description": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react-dependent-script": "^1.1.2",
+    "socket.io": "^3.1.1"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node app.js"
@@ -15,9 +20,5 @@
   "bugs": {
     "url": "https://github.com/hgawera/CloudComputing/issues"
   },
-  "homepage": "https://github.com/hgawera/CloudComputing#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^3.1.1"
-  }
+  "homepage": "https://github.com/hgawera/CloudComputing#readme"
 }
