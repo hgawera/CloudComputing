@@ -82,33 +82,33 @@ pre {
   justify-content: space-between;
 }
 
-/* Showcase */
-.showcase {
+/*Homepage*/
+.homepage {
   height: 400px;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
 }
 
-.showcase h1 {
+.homepage h1 {
   font-size: 40px;
 }
 
-.showcase p {
+.homepage p {
   margin: 20px 0;
 }
 
-.showcase .grid {
+.homepage .grid {
   overflow: visible;
   grid-template-columns: 55% auto;
   gap: 30px;
 }
 
-.showcase-text {
+.homepage-text {
   animation: slideInFromLeft 1s ease-in;
 }
 
-.showcase-form {
+.homepage-form {
   position: relative;
   top: 60px;
   height: 225px;
@@ -119,12 +119,12 @@ pre {
   animation: slideInFromRight 1s ease-in;
 }
 
-.showcase-form .form-control {
+.homepage-form .form-control {
   margin: 30px 0;
 }
 
-.showcase-form input[type='text'],
-.showcase-form input[type='email'] {
+.homepage-form input[type='text'],
+.homepage-form input[type='email'] {
   border: 0;
   border-bottom: 1px solid #b4becb;
   width: 100%;
@@ -132,12 +132,12 @@ pre {
   font-size: 16px;
 }
 
-.showcase-form input:focus {
+.homepage-form input:focus {
   outline: none;
 }
 
-.showcase::before,
-.showcase::after {
+.homepage::before,
+.homepage::after {
   content: '';
   position: absolute;
   height: 100px;
@@ -149,26 +149,34 @@ pre {
   -webkit-transform: skewY(-3deg);
 }
 
-/* Stats */
-.stats {
+/* Info*/
+.info {
   padding-top: 100px;
   animation: slideInFromBottom 1s ease-in;
 }
 
-.stats-heading {
+.info-heading {
   max-width: 500px;
   margin: auto;
 }
 
-.stats .grid h3 {
+.info .grid h3 {
   font-size: 35px;
 }
 
-.stats .grid p {
+.info .grid p {
   font-size: 20px;
   font-weight: bold;
 }
 
+
+
+/* About */
+.about .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Join */
 .room-selector {
   position: relative;
   align-items: center;
@@ -180,14 +188,17 @@ pre {
 
 .video-position {
     position: absolute;
-    top: 25%;
-    left: 30%;
+    bottom: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
 #video-chat-container {
-    width: 100%;
-    background-color: black;
+    position: relative;
+    margin-top: 501px;
+    width: 95%;
+    height: 800px;
+    background-color: white;
     text-align: center
 }
 
@@ -195,7 +206,7 @@ pre {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    height: 500px; 
+    height: 50%; 
 }
 
 #remote-video {
@@ -203,11 +214,6 @@ pre {
     margin-left: auto;
     margin-right: auto;
     height: 500px; 
-}
-
-/* Cloud */
-.cloud .grid {
-  grid-template-columns: 4fr 3fr;
 }
 
 /* Footer */
@@ -259,27 +265,27 @@ pre {
 /* Tablets and under */
 @media (max-width: 768px) {
   .grid,
-  .showcase .grid,
-  .stats .grid,
+  .homepage .grid,
+  .info .grid,
   .cli .grid,
-  .cloud .grid,
+  .about .grid,
   .features-main .grid,
   .docs-main .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }
 
-  .showcase {
+  .homepage {
     height: auto;
   }
 
-  .showcase-text {
+  .homepage-text {
     text-align: center;
     margin-top: 40px;
     animation: slideInFromTop 1s ease-in;
   }
 
-  .showcase-form {
+  .homepage-form {
     justify-self: center;
     margin: auto;
     animation: slideInFromBottom 1s ease-in;
@@ -323,7 +329,7 @@ pre {
     background-color: rgba(0, 0, 0, 0.1);
   }
   
-  .showcase-form {
+  .homepage-form {
     width: 300px;
   }
 }
