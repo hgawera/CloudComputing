@@ -38,6 +38,10 @@
   .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
   .bg-secondary,
@@ -56,6 +60,8 @@
   .btn-light {
     background-color: var(--light-color);
     color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
   
   .bg-primary a,
@@ -65,6 +71,11 @@
   .bg-dark a,
   .btn-dark a {
     color: #fff;
+    margin-top: 10px;
+  }
+
+  .btn-logout {
+    display: none;
   }
   
   /* Text colors */
