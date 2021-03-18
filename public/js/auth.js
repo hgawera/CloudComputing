@@ -8,7 +8,6 @@ btnLogin.addEventListener("click", e => {
 
     const email = txtEmail.value;
     const pass = txtPassword.value;
-    const auth = firebase.auth();
   
     firebase.auth().signInWithEmailAndPassword(email, pass)
     alert("Logged In!");
@@ -19,9 +18,8 @@ btnLogin.addEventListener("click", e => {
 btnSignup.addEventListener('click', e=> {
     const email = txtEmail.value;
     const pass = txtPassword.value;
-    const auth = firebase.auth();
   
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
     //firebase.auth().createUserWithEmailAndPassword(email, password)
     alert("User Created!")
   
@@ -29,24 +27,24 @@ btnSignup.addEventListener('click', e=> {
   });
 
 btnLogout.addEventListener('click', e => {
-      //firebase.auth().signOut();
-      firebase.auth().signOut().then(() => {
-        alert("Signed Out")
-      }).catch((error) => {
-        console.log(e);
-      });
+      firebase.auth().signOut();
+    //   firebase.auth().signOut().then(() => {
+    //     alert("Signed Out")
+    //   }).catch((error) => {
+    //     console.log(e);
+    //   });
       
-  })
+  });
 
-// firebase.auth().onAuthStateChanged(firebaseUser => {
-//       if (firebaseUser) {
-//           console.log(firebaseUser);
-//           btnLogout.classList.remove('btn-logout');
-//       } else {
-//           console.log("Not Logged In");
-//           btnLogout.classList.add('btn-logout');
-//       }
+firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+          console.log(firebaseUser);
+          btnLogout.classList.remove('btn-logout');
+      } else {
+          console.log("Not Logged In");
+          btnLogout.classList.add('btn-logout');
+      }
 
-// });
+});
 
   
