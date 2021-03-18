@@ -11,6 +11,7 @@ btnLogin.addEventListener("click", e => {
     const auth = firebase.auth();
   
     const promise = auth.signInWithEmailAndPassword(email, pass);
+    alert("Logged In!");
   
     promise.catch(e => console.log(e.message));
   });
@@ -21,6 +22,7 @@ btnSignup.addEventListener('click', e=> {
     const auth = firebase.auth();
   
     const promise = auth.createUserWithEmailAndPassword(email, pass);
+    alert("User Created!")
   
     promise.catch(e => console.log(e.message));
   });
@@ -29,15 +31,15 @@ btnLogout.addEventListener('click', e => {
       firebase.auth().signOut();
   })
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-          console.log(firebaseUser);
-          btnLogout.classList.remove('btn-logout');
-      } else {
-          console.log("Not Logged In");
-          btnLogout.classList.add('btn-logout');
-      }
+// firebase.auth().onAuthStateChanged(firebaseUser => {
+//       if (firebaseUser) {
+//           console.log(firebaseUser);
+//           btnLogout.classList.remove('btn-logout');
+//       } else {
+//           console.log("Not Logged In");
+//           btnLogout.classList.add('btn-logout');
+//       }
 
-});
+// });
 
   
