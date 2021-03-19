@@ -9,7 +9,7 @@ btnLogin.addEventListener("click", e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
   
-    firebase.auth().signInWithEmailAndPassword(email, pass)
+    promise = firebase.auth().signInWithEmailAndPassword(email, pass)
     alert("Logged In!");
   
     promise.catch(e => console.log(e.message));
@@ -27,22 +27,22 @@ btnSignup.addEventListener('click', e=> {
   });
 
 btnLogout.addEventListener('click', e => {
-      firebase.auth().signOut();
-    //   firebase.auth().signOut().then(() => {
-    //     alert("Signed Out")
-    //   }).catch((error) => {
-    //     console.log(e);
-    //   });
+      //firebase.auth().signOut();
+      firebase.auth().signOut().then(() => {
+        alert("Signed Out")
+      }).catch((error) => {
+        console.log(e);
+      });
       
   });
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-          console.log(firebaseUser);
-          btnLogout.classList.remove('btn-logout');
+firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+          console.log(user);
+          btnLogout.classList.remove('hidden');
       } else {
           console.log("Not Logged In");
-          btnLogout.classList.add('btn-logout');
+          btnLogout.classList.add('hidden');
       }
 
 });

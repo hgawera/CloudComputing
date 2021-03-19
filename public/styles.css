@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 :root {
   --primary-color: #047aed;
@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -123,8 +123,8 @@ pre {
   margin: 30px 0;
 }
 
-.homepage-form input[type='text'],
-.homepage-form input[type='email'] {
+.homepage-form input[type="text"],
+.homepage-form input[type="email"] {
   border: 0;
   border-bottom: 1px solid #b4becb;
   width: 100%;
@@ -138,7 +138,7 @@ pre {
 
 .homepage::before,
 .homepage::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 100px;
   bottom: -70px;
@@ -169,8 +169,6 @@ pre {
   font-weight: bold;
 }
 
-
-
 /* About */
 .about .grid {
   grid-template-columns: 4fr 3fr;
@@ -187,33 +185,33 @@ pre {
 }
 
 .video-position {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #video-chat-container {
-    position: relative;
-    margin-top: 501px;
-    width: 95%;
-    height: 800px;
-    background-color: white;
-    text-align: center
+  position: relative;
+  margin-top: 501px;
+  width: 95%;
+  height: 800px;
+  background-color: white;
+  text-align: center;
 }
 
 #local-video {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 50%; 
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50%;
 }
 
 #remote-video {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 500px; 
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
 }
 
 /* Footer */
@@ -328,7 +326,7 @@ pre {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.1);
   }
-  
+
   .homepage-form {
     width: 300px;
   }
@@ -343,7 +341,7 @@ pre {
   transform: translate(-50%, -50%);
   width: 400px;
   background: #047aed;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 .center h1 {
@@ -351,16 +349,17 @@ pre {
   padding: 0 0 20px 0;
   border-bottom: 1px solid white;
 }
-
-.center form {
+/* form */
+.center {
   padding: 0 40px;
   box-sizing: border-box;
 }
 
-form .txt_field {
-   position: relative;
-   border-bottom: 2px solid white;
-   margin: 30px 0;
+/* form */
+.txt_field {
+  position: relative;
+  border-bottom: 2px solid white;
+  margin: 30px 0;
 }
 
 .txt_field input {
@@ -384,19 +383,19 @@ form .txt_field {
   transition: 0.5s;
 }
 
-.txt_field span::before{
-  content:'';
+.txt_field span::before {
+  content: "";
   position: absolute;
   top: 40px;
   left: 0;
   width: 100%;
   height: 2px;
   background-color: white;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .txt_field input:focus ~ label,
-.txt_field input:valid ~ label{
+.txt_field input:valid ~ label {
   top: -7px;
   color: white;
 }
