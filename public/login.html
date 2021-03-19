@@ -34,7 +34,7 @@
     <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <h1 class="logo">Mooz.</h1>
+            <h1 class="logo">Mooz</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -46,7 +46,7 @@
     </div>
     <div class="center">
         <h1>Login</h1>
-        <form>
+        <div>
             <div class="txt_field">
                 <input id="txtEmail" type="email" placeholder="Email" required>
                 <span></span>
@@ -58,10 +58,10 @@
                 <span></span>
                 <label>Password</label>
             </div>
-            <input id="btnLogin" type="submit" value="Login" class="btn btn-light">
-            <input id="btnLogout" type="submit" value="Logout" class="btn btn-logout">
-            <input id="btnSignup" type="submit" value="Sign up" class="btn btn-secondary">
-        </form>
+            <button id="btnLogin" class="btn btn-light">Login </button>
+            <button id="btnLogout"class="btn btn-secondary hidden">Logout </button>
+            <button id="btnSignup" class="btn btn-light">Sign up </button>
+        </div>
 
         <script src="./js/auth.js"></script>
     </div>
@@ -69,4 +69,3 @@
     
 </body>
 </html>
-
