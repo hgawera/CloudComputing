@@ -1,3 +1,7 @@
+// The below code is based off the tutorial hosted on acidtango.com. 
+// Exceptions to this where we have added our own code are explicitly stated. @ = created.
+// https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
+
 const roomSelectionContainer = document.getElementById('room-selection-container')
 const roomInput = document.getElementById('room-input')
 const connectButton = document.getElementById('connect-button')
@@ -136,6 +140,7 @@ socket.on('webrtc_ice_candidate', (event) => {
   })
   rtcPeerConnection.addIceCandidate(candidate)
 
+  // @ Detect when the second user has disconnected from the room
   rtcPeerConnection.oniceconnectionstatechange = function() {
     if(rtcPeerConnection.iceConnectionState == 'disconnected') {
         console.log('Peer disconnected');
@@ -143,6 +148,7 @@ socket.on('webrtc_ice_candidate', (event) => {
         socket.emit("peerDisconnected", roomId);
     }
   }
+  //
 })
 
 function addLocalTracks(rtcPeerConnection) {
@@ -189,11 +195,13 @@ function setRemoteStream(event) {
   remoteStream = event.stream;
 }
 
+// @ When the second peer disconnects, remove their video.
 function removeRemoteStream() {
   rtcPeerConnection = new RTCPeerConnection(iceServers);
   remoteVideoComponent.srcObject = null;
   remoteStream = null;
 }
+//
 
 function sendIceCandidate(event) {
   if (event.candidate) {
