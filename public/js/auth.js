@@ -21,10 +21,15 @@ btnLogin.addEventListener("click", e => {
 btnSignup.addEventListener('click', e=> {
     const email = txtEmail.value;
     const pass = txtPassword.value;
-  
-    const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
+
+    if (pass.length > 6) {
+      const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
     //firebase.auth().createUserWithEmailAndPassword(email, password)
-    alert("User Created!")
+      alert("User Created!")
+    } else {
+      alert("Password too short")
+    }
+      
   
     promise.catch(e => console.log(e.message));
   });
