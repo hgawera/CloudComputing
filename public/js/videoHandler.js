@@ -3,7 +3,7 @@
 // https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
 
 const roomSelectionContainer = document.getElementById('room-selection-container')
-const roomInput = 0
+let roomInput = 0
 const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
 const localVideoComponent = document.getElementById('local-video')
