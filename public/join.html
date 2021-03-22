@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mooz</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Mooz.</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="join.html">Join</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section>
+        <div id="room-selection-container" class="room-selector">
+            <h1>Mooz</h1>
+            <label>Enter a Room ID</label>
+            <input id="room-input" type="text" />
+            <button id="connect-button" class="btn">Join</button>
+        </div>
+    </section>
+    
+    <section>
+        <div id="video-chat-container" class="video-position" style="display: none">
+            <video muted id="local-video" autoplay="autoplay"></video>
+            <video id="remote-video" autoplay="autoplay"></video>
+            <script src="/socket.io/socket.io.js"></script>
+        <script defer type="text/javascript" src="/js/videoHandler.js"></script>
+        </div>
+    </section>
+    
+        
+    
+        
+    
+
+    
+
+    <!-- Footer -->
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Mooz
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="join.html">Join</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="https://github.com/hgawera/CloudComputing/tree/main/public"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

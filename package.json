@@ -1,7 +1,14 @@
 {
   "name": "webrtc-node-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Rep for CLoud Computing CW.",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^8.3.1",
+    "firebase-tools": "^9.6.1",
+    "react-dependent-script": "^1.1.2",
+    "socket.io": "^3.1.1"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node app.js"
@@ -16,9 +23,5 @@
     "url": "https://github.com/hgawera/CloudComputing/issues"
   },
   "homepage": "https://github.com/hgawera/CloudComputing#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "socket.io": "^3.1.1"
-  }
+  "devDependencies": {}
 }

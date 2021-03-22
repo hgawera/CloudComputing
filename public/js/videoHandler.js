@@ -1,13 +1,14 @@
-// DOM elements.
-const roomSelectionContainer = document.getElementById('room-selection-container')
-const roomInput = document.getElementById('room-input')
-const connectButton = document.getElementById('connect-button')
+// The below code is based off the tutorial hosted on acidtango.com. 
+// Exceptions to this where we have added our own code are explicitly stated. @ = created.
+// https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
 
+const roomSelectionContainer = document.getElementById('room-selection-container')
+const roomInput = 0
+const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
 const localVideoComponent = document.getElementById('local-video')
 const remoteVideoComponent = document.getElementById('remote-video')
 
-// Variables.
 const socket = io()
 const mediaConstraints = {
   audio: true,
@@ -16,10 +17,16 @@ const mediaConstraints = {
 let localStream
 let remoteStream
 let isRoomCreator
-let rtcPeerConnection // Connection between the local device and the remote peer.
+let rtcPeerConnection
 let roomId
 
-// Free public STUN servers provided by Google.
+// on the join room buttons, the room variable is based on value of the button
+function getRoomNumber(room) {
+  console.log("Room ID: " + room);
+  roomInput = room; // the roominput is set as the value of the button
+}
+
+// What are ICE servers?
 const iceServers = {
   iceServers: [
     { urls: 'stun:stun.l.google.com:19302' },
@@ -30,33 +37,35 @@ const iceServers = {
   ],
 }
 
-// BUTTON LISTENER ============================================================
+// Request inputted room
 connectButton.addEventListener('click', () => {
   joinRoom(roomInput.value)
 })
 
-// SOCKET EVENT CALLBACKS =====================================================
+
+// New room created
 socket.on('room_created', async () => {
   console.log('Socket event callback: room_created')
-
   await setLocalStream(mediaConstraints)
   isRoomCreator = true
 })
 
+
+// Joining existing room
 socket.on('room_joined', async () => {
   console.log('Socket event callback: room_joined')
-
   await setLocalStream(mediaConstraints)
   socket.emit('start_call', roomId)
 })
 
+
+// Maximum participants for the room id reached
 socket.on('full_room', () => {
   console.log('Socket event callback: full_room')
-
   alert('The room is full, please try another one')
 })
 
-// FUNCTIONS ==================================================================
+// Input validation
 function joinRoom(room) {
   if (room === '') {
     alert('Please type a room ID')
@@ -67,10 +76,13 @@ function joinRoom(room) {
   }
 }
 
+
 function showVideoConference() {
   roomSelectionContainer.style = 'display: none'
   videoChatContainer.style = 'display: block'
 }
+
+
 
 async function setLocalStream(mediaConstraints) {
   let stream
@@ -84,7 +96,12 @@ async function setLocalStream(mediaConstraints) {
   localVideoComponent.srcObject = stream
 }
 
-// SOCKET EVENT CALLBACKS =====================================================
+socket.on("close", async() => {
+  removeRemoteStream();
+})
+
+
+// Creating P2P connection
 socket.on('start_call', async () => {
   console.log('Socket event callback: start_call')
 
@@ -97,6 +114,8 @@ socket.on('start_call', async () => {
   }
 })
 
+
+// Creating P2P connection if not creator
 socket.on('webrtc_offer', async (event) => {
   console.log('Socket event callback: webrtc_offer')
 
@@ -119,20 +138,30 @@ socket.on('webrtc_answer', (event) => {
 socket.on('webrtc_ice_candidate', (event) => {
   console.log('Socket event callback: webrtc_ice_candidate')
 
-  // ICE candidate configuration.
+  
   var candidate = new RTCIceCandidate({
     sdpMLineIndex: event.label,
     candidate: event.candidate,
   })
   rtcPeerConnection.addIceCandidate(candidate)
+
+  // @ Detect when the second user has disconnected from the room
+  rtcPeerConnection.oniceconnectionstatechange = function() {
+    if(rtcPeerConnection.iceConnectionState == 'disconnected') {
+        console.log('Peer disconnected');
+        removeRemoteStream();
+        socket.emit("peerDisconnected", roomId);
+    }
+  }
+  //
 })
 
-// FUNCTIONS ==================================================================
 function addLocalTracks(rtcPeerConnection) {
   localStream.getTracks().forEach((track) => {
     rtcPeerConnection.addTrack(track, localStream)
   })
 }
+
 
 async function createOffer(rtcPeerConnection) {
   let sessionDescription
@@ -167,9 +196,17 @@ async function createAnswer(rtcPeerConnection) {
 }
 
 function setRemoteStream(event) {
-  remoteVideoComponent.srcObject = event.streams[0]
-  remoteStream = event.stream
+  remoteVideoComponent.srcObject = event.streams[0];
+  remoteStream = event.stream;
 }
+
+// @ When the second peer disconnects, remove their video.
+function removeRemoteStream() {
+  rtcPeerConnection = new RTCPeerConnection(iceServers);
+  remoteVideoComponent.srcObject = null;
+  remoteStream = null;
+}
+//
 
 function sendIceCandidate(event) {
   if (event.candidate) {
