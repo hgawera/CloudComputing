@@ -3,6 +3,9 @@ const txtPassword = document.getElementById("txtPassword");
 const btnLogin = document.getElementById("btnLogin");
 const btnLogout = document.getElementById("btnLogout");
 const btnSignup = document.getElementById("btnSignup");
+const join = document.getElementById("join");
+const joinA = document.getElementById("joinAbout");
+const joinI = document.getElementById("joinIndex");
   
 btnLogin.addEventListener("click", e => {
 
@@ -18,10 +21,15 @@ btnLogin.addEventListener("click", e => {
 btnSignup.addEventListener('click', e=> {
     const email = txtEmail.value;
     const pass = txtPassword.value;
-  
-    const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
+
+    if (pass.length > 6) {
+      const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
     //firebase.auth().createUserWithEmailAndPassword(email, password)
-    alert("User Created!")
+      alert("User Created!")
+    } else {
+      alert("Password too short")
+    }
+      
   
     promise.catch(e => console.log(e.message));
   });
@@ -40,9 +48,18 @@ firebase.auth().onAuthStateChanged(user => {
       if (user) {
           console.log(user);
           btnLogout.classList.remove('hidden');
+          //window.location.href = "join.html";
+          join.classList.remove('hidden');
+          joinA.classList.remove('hidden');
+          joinI.classList.remove('hidden');
+
       } else {
           console.log("Not Logged In");
           btnLogout.classList.add('hidden');
+          join.classList.add('hidden');
+          joinA.classList.add('hidden');
+          joinI.classList.add('hidden');
+
       }
 
 });
