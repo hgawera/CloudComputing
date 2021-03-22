@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source":"/",
+        "destination":"index.html"
+      },
+      {
         "source": "**",
         "run": {
           "serviceId": "moozapp",
