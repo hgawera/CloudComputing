@@ -6,6 +6,21 @@ const btnSignup = document.getElementById("btnSignup");
 const join = document.getElementById("join");
 const joinA = document.getElementById("joinAbout");
 const joinI = document.getElementById("joinIndex");
+
+
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+var firstTimeLogin = true;
+
+if (user != null) {
+  email = user.email;
+  emailVerified = user.emailVerified;
+}
+
+console.log(email);
+console.log(emailVerified);
+  
+
   
 btnLogin.addEventListener("click", e => {
 
@@ -15,23 +30,52 @@ btnLogin.addEventListener("click", e => {
     promise = firebase.auth().signInWithEmailAndPassword(email, pass)
     alert("Logged In!");
   
-    promise.catch(e => console.log(e.message));
+    promise.catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      }
+      if (errorCode == 'auth/user-not-found') {
+        alert("User does not exist")
+      }
+      if (errorCode == 'auth/user-disabled') {
+        alert("Account has been disabled")
+      }
+      if (errorCode == 'auth/invalid-email') {
+        alert("Invalid Email") 
+      }
+      console.log(error);
   });
+});
 
 btnSignup.addEventListener('click', e=> {
     const email = txtEmail.value;
     const pass = txtPassword.value;
 
-    if (pass.length > 6) {
-      const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
-    //firebase.auth().createUserWithEmailAndPassword(email, password)
-      alert("User Created!")
+    if (pass.length > 4) {
+      alert("User Created")
+      firebase.auth().createUserWithEmailAndPassword(email, pass)
     } else {
-      alert("Password too short")
+      alert("Password to Short!")
     }
-      
-  
-    promise.catch(e => console.log(e.message));
+    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(e => {
+      switch (e.code) {
+        case 'auth/email-already-in-use':
+          alert(`Email address already in use.`);
+          break;
+        case 'auth/invalid-email':
+          alert(`Email address is invalid.`);
+          break;
+        case 'auth/operation-not-allowed':
+          alert(`Error during sign up.`);
+          break;
+        case 'auth/weak-password':
+          alert('Password is not strong enough. Add additional characters including special characters and numbers.');
+          break;
+      }
+    });
   });
 
 btnLogout.addEventListener('click', e => {
@@ -46,22 +90,27 @@ btnLogout.addEventListener('click', e => {
 
 firebase.auth().onAuthStateChanged(user => {
       if (user) {
+
+        //User logged in
           console.log(user);
+
+          btnLogin.classList.add('hidden');
+          btnSignup.classList.add('hidden');
+        
           btnLogout.classList.remove('hidden');
-          //window.location.href = "join.html";
           join.classList.remove('hidden');
           joinA.classList.remove('hidden');
           joinI.classList.remove('hidden');
-
-      } else {
+          
+        } else {
           console.log("Not Logged In");
+
+          btnLogin.classList.remove('hidden');
+          btnSignup.classList.remove('hidden');
+
           btnLogout.classList.add('hidden');
           join.classList.add('hidden');
           joinA.classList.add('hidden');
           joinI.classList.add('hidden');
-
       }
-
 });
-
-  
