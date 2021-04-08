@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <h1 class="logo">Mooz.</h1>
+            <h1 class="logo">Mooz</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -22,18 +22,9 @@
             </nav>
         </div>
     </div>
-
-    <section>
-        <div id="room-selection-container" class="room-selector">
-            <h1>Mooz</h1>
-            <label>Enter a Room ID</label>
-            <input id="room-input" type="text" />
-            <button id="connect-button" class="btn">Join</button>
-        </div>
-    </section>
     
     <section>
-        <div id="video-chat-container" class="video-position" style="display: none">
+        <div id="video-chat-container" class="video-position">
             <video muted id="local-video" autoplay="autoplay"></video>
             <video id="remote-video" autoplay="autoplay"></video>
             <script src="/socket.io/socket.io.js"></script>
