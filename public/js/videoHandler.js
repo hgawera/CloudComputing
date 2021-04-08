@@ -3,13 +3,15 @@
 // https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
 
 const roomSelectionContainer = document.getElementById('room-selection-container')
-const roomInput = document.getElementById('room-input')
+let roomInput = 0
 const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
 const localVideoComponent = document.getElementById('local-video')
 const remoteVideoComponent = document.getElementById('remote-video')
 
-const socket = io()
+//const io = require('socket.io')(server);
+
+const socket = io();
 const mediaConstraints = {
   audio: true,
   video: { width: 1280, height: 720 },
@@ -20,6 +22,11 @@ let isRoomCreator
 let rtcPeerConnection
 let roomId
 
+// on the join room buttons, the room variable is based on value of the button
+function getRoomNumber(room) {
+  console.log("Room ID: " + room);
+  roomInput = room; // the roominput is set as the value of the button
+}
 
 // What are ICE servers?
 const iceServers = {

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.aboutflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="utilities.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="js/videoHandler.js"></script>
     <title>Mooz</title>
 </head>
 <body>
@@ -17,9 +18,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="join.html" class="hidden" id="joinIndex">Join</a></li>
-                    
+                    <li><a href="join.html">Join</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,17 +58,35 @@
                         <i></i>
                         <h3>Room ID</h3>
                         <p class="text-secondary">Enter the Room ID</p>
+                        <br/>
+                        <div class="card">
+                            <h2>Join Room 1</h2>
+                            <img src="images/group-icon-removebg-preview.png" alt=""/>
+                            <button type="button" class="btn btn-primary" value="1" onclick="getRoomNumber(this.value)">Join</button>
+                        </div>
                     </div>
                     <div>
                         <i></i>
                         <h3>Unlimited People</h3>
                         <p class="text-secondary">Add as many people as you like</p>
+                        <br/>
+                        <div class="card">
+                            <h2>Join Room 2</h2>
+                            <img src="images/group-icon-removebg-preview.png" alt=""/>
+                            <button type="button" class="btn btn-primary" value="2" onclick="getRoomNumber(this.value)">Join</button>
+                        </div>
                     </div>
     
                     <div>
                         <i></i>
                         <h3>Invite your friends</h3>
                         <p class="text-secondary">Simply tell them the Room ID</p>
+                        <br/>
+                        <div class="card">
+                            <h2>Join Room 3</h2>
+                            <img src="images/group-icon-removebg-preview.png" alt=""/>
+                            <button type="button" class="btn btn-primary" value="3" onclick="getRoomNumber(this.value)">Join</button>
+                        </div>
                     </div>
                 </div>
             </div>  
@@ -78,6 +95,13 @@
 
     </section>
 
+    <!--Join Rooms-->
+    <section class="join">
+        <div class="container grid">
+            <div class = "grid grid-3 text-center">
+            </div>
+        </div>
+    </section>
     <!--About-->
 
     <section class="about bg-primary my-2 py-2">
@@ -112,6 +136,5 @@
     </footer>
 </body>
 </html>
-
 
 
