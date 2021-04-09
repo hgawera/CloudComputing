@@ -3,6 +3,7 @@
 // https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
 
 const roomSelectionContainer = document.getElementById('room-selection-container')
+const roomInputTxt = document.getElementById('room-input')
 let roomInput = 0
 const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
@@ -41,7 +42,8 @@ const iceServers = {
 
 // Request inputted room
 connectButton.addEventListener('click', () => {
-  joinRoom(roomInput.value)
+  getRoomNumber(roomInputTxt.value)
+  joinRoom(roomInput)
 })
 
 
