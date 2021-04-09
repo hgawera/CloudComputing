@@ -5,10 +5,17 @@
 const roomSelectionContainer = document.getElementById('room-selection-container')
 const roomInputTxt = document.getElementById('room-input')
 let roomInput = 0
-const connectButton = document.getElementById('connect-button')
+//const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
 const localVideoComponent = document.getElementById('local-video')
 const remoteVideoComponent = document.getElementById('remote-video')
+
+// collect homepage classes to remove when a user joins a room.
+const homepage = document.getElementsByClassName('homepage')
+const info = document.getElementsByClassName('info')
+const join = document.getElementsByClassName('join')
+const about = document.getElementsByClassName('about bg-primary my-2 py-2')
+const video = document.getElementsByClassName('video')
 
 //const io = require('socket.io')(server);
 
@@ -27,6 +34,7 @@ let roomId
 function getRoomNumber(room) {
   console.log("Room ID: " + room);
   roomInput = room; // the roominput is set as the value of the button
+  joinRoom(roomInput)
 }
 
 // What are ICE servers?
@@ -41,10 +49,10 @@ const iceServers = {
 }
 
 // Request inputted room
-connectButton.addEventListener('click', () => {
+/*connectButton.addEventListener('click', () => {
   getRoomNumber(roomInputTxt.value)
   joinRoom(roomInput)
-})
+})*/
 
 
 // New room created
@@ -80,10 +88,13 @@ function joinRoom(room) {
   }
 }
 
-
+//hide all sections except header and footer. Allow video to display in a block style
 function showVideoConference() {
-  roomSelectionContainer.style = 'display: none'
-  videoChatContainer.style = 'display: block'
+  for (let el of homepage) el.style = 'display: none'
+  for (let el of info) el.style = 'display: none'
+  for (let el of join) el.style = 'display: none'
+  for (let el of about) el.style = 'display: none'
+  video[0].style = 'display: block'
 }
 
 

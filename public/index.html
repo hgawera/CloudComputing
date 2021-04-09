@@ -95,6 +95,15 @@
         </div>
 
     </section>
+    
+    <section class="video">
+        <div id="video-chat-container" class="video-position" style="display: none">
+            <video muted id="local-video" autoplay="autoplay"></video>
+            <video id="remote-video" autoplay="autoplay"></video>
+            <script src="/socket.io/socket.io.js"></script>
+            <script defer type="text/javascript" src="/js/videoHandler.js"></script>
+        </div>
+    </section>
 
     <!--Join Rooms-->
     <section class="join">
