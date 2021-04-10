@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
       socket.join(roomId)
       socket.emit('room_created', roomId)
       clientsDict[roomId] = 1
-      // @ Added a timer so that the room resets after a predetermined amount of time.
+      // Added a timer so that the room resets after a predetermined amount of time.
       hostTimer(socket, roomId);
       //
     } else if (roomClients == 1) {

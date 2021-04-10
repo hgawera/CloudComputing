@@ -30,6 +30,13 @@ let isRoomCreator
 let rtcPeerConnection
 let roomId
 
+
+if (String(sessionStorage.getItem("roomID")) != "null"){
+  getRoomNumber(sessionStorage.getItem("roomID"));
+  console.log(sessionStorage.getItem("roomID"));
+  sessionStorage.setItem("roomID", "null");
+}
+
 // on the join room buttons, the room variable is based on value of the button
 function getRoomNumber(room) {
   console.log("Room ID: " + room);
@@ -95,7 +102,7 @@ function showVideoConference() {
   for (let el of join) el.style = 'display: none'
   for (let el of about) el.style = 'display: none'
   // video[0].style = 'display: block'
-  videoChatContainer.style = 'display: block'
+  videoChatContainer.hidden = false;
 }
 
 

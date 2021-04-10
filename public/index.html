@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="utilities.css">
     <link rel="stylesheet" href="styles.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/videoHandler.js" defer></script>
+    <script src="js/home.js" defer></script>
     <title>Mooz</title>
 </head>
 <body>
@@ -63,7 +63,7 @@
                         <div class="card">
                             <h2>Join Room 1</h2>
                             <img src="images/group-icon-removebg-preview.png" alt=""/>
-                            <button type="button" class="btn btn-primary" value="1" onclick="getRoomNumber(this.value)">Join</button>
+                            <button type="button" class="btn btn-primary" value="1" onclick="startCall(this.value)">Join</button>
                         </div>
                     </div>
                     <div>
@@ -74,7 +74,7 @@
                         <div class="card">
                             <h2>Join Room 2</h2>
                             <img src="images/group-icon-removebg-preview.png" alt=""/>
-                            <button type="button" class="btn btn-primary" value="2" onclick="getRoomNumber(this.value)">Join</button>
+                            <button type="button" class="btn btn-primary" value="2" onclick="startCall(this.value)">Join</button>
                         </div>
                     </div>
     
@@ -86,7 +86,7 @@
                         <div class="card">
                             <h2>Join Room 3</h2>
                             <img src="images/group-icon-removebg-preview.png" alt=""/>
-                            <button type="button" class="btn btn-primary" value="3" onclick="getRoomNumber(this.value)">Join</button>
+                            <button type="button" class="btn btn-primary" value="3" onclick="startCall(this.value)">Join</button>
                         </div>
                     </div>
                 </div>
@@ -94,15 +94,6 @@
         </div>
         </div>
 
-    </section>
-    
-    <section class="video">
-        <div id="video-chat-container" class="video-position" style="display: none">
-            <video muted id="local-video" autoplay="autoplay"></video>
-            <video id="remote-video" autoplay="autoplay"></video>
-            <!-- <script src="/socket.io/socket.io.js"></script>
-            <script defer type="text/javascript" src="/js/videoHandler.js"></script> -->
-        </div>
     </section>
 
     <!--Join Rooms-->
