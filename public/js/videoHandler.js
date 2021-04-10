@@ -56,10 +56,6 @@ if (String(sessionStorage.getItem("roomID")) != "null"){
 
 // Hide all sections except header and footer. Allow video to display.
 function showVideoConference() {
-  for (let el of homepage) el.style = 'display: none'
-  for (let el of info) el.style = 'display: none'
-  for (let el of join) el.style = 'display: none'
-  for (let el of about) el.style = 'display: none'
   videoChatContainer.hidden = false;
 }
 

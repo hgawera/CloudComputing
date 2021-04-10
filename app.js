@@ -16,7 +16,6 @@ app.use('/', express.static('public'))
 
 module.exports = app;
 
-
 // @ Attributed to Dan Dascalescu
 // https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 function sleep(ms) {
@@ -26,7 +25,7 @@ function sleep(ms) {
 
 
 // *************************************
-// Start of code added by us for Cloud Computing 
+// Start of code added by us for Cloud Computing
 
 
 // Holds a list of roomIDs and the number of clients in each
