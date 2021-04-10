@@ -1,7 +1,7 @@
 // Group Project 2021 UG6
 
 // The code in this file is based off the documentation at https://firebase.google.com/docs/auth/web/password-auth
-// https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
+// 
 
 // No code was copied here.
 
