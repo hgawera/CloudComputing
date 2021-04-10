@@ -59,9 +59,9 @@ btnSignup.addEventListener('click', e=> {
     const email = txtEmail.value;
     const pass = txtPassword.value;
 
-    if (pass.length > 4) {
-      firebase.auth().createUserWithEmailAndPassword(email, pass)
-    }
+  
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+  
     //If the user does not enter one of the listed errors then the account is created.
     firebase.auth().createUserWithEmailAndPassword(email, pass).catch(e => {
       switch (e.code) {
@@ -74,7 +74,7 @@ btnSignup.addEventListener('click', e=> {
         case 'auth/operation-not-allowed':
           alert(`Error during sign up.`);
           break;
-        case 'auth/weak-password' && pass.length < 5:
+        case 'auth/weak-password':
           alert('Password is not strong enough. Add additional characters including special characters and numbers.');
           break;
       }
