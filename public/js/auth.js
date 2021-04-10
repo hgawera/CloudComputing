@@ -1,9 +1,13 @@
 // Group Project 2021 UG6
 
 // The code in this file is based off the documentation at https://firebase.google.com/docs/auth/web/password-auth
+<<<<<<< HEAD
 // 
 
 // No code was copied here.
+=======
+// All code in this file was created for Cloud Computing.
+>>>>>>> 63300d309d1c50d31ed349f04685859c61caf737
 
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
@@ -13,7 +17,6 @@ const btnSignup = document.getElementById("btnSignup");
 const join = document.getElementById("join");
 const joinA = document.getElementById("joinAbout");
 const joinI = document.getElementById("joinIndex");
-
 
 
 var user = firebase.auth().currentUser;
