@@ -1,3 +1,5 @@
+# This file tells Docker how to set up the environment for our container.
+
 FROM node:12
 
 WORKDIR /app

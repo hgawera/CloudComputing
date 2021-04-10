@@ -1,3 +1,5 @@
+ # This file tells Cloud Build how to build and deploy the Dockerfile for this project.
+ 
  steps:
  # Build the container image
  - name: 'gcr.io/cloud-builders/docker'

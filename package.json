@@ -9,7 +9,7 @@
     "react-dependent-script": "^1.1.2",
     "socket.io": "^3.1.1"
   },
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/hgawera/CloudComputing.git"
   },
-  "author": "",
+  "author": "UG6",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hgawera/CloudComputing/issues"
