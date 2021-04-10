@@ -1,0 +1,74 @@
+<!--Cloud Project 2021
+
+The design and code was adapted from TravestyMedia at. https://www.youtube.com/watch?v=p0bGHP-PXD4&ab_channel=TraversyMedia 
+Code added by students in UG6 for the Cloud Computing module can be shown in the document below.
+This is indicated by comments
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer type="text/javascript" src="/js/videoHandler.js"></script>
+    <title>Mooz</title>
+</head>
+<body>
+    <!-- Navbar was completed by the student -->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Mooz.</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="join.html" class="hidden">Join</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!--The join function was done by the student-->
+
+    <section>
+        <div id="room-selection-container" class="room-selector">
+            <h1>Mooz</h1>
+            <label>Enter a Room ID</label>
+            <input id="room-input" type="text" />
+            <button id="connect-button" class="btn">Join</button>
+        </div>
+    </section>
+    
+    <section>
+        <div id="video-chat-container" class="video-position" hidden>
+            <video muted id="local-video" autoplay="autoplay"></video>
+            <video id="remote-video" autoplay="autoplay"></video>
+        </div>
+    </section>
+    
+
+    <!-- Footer was done by the student-->
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Mooz
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="join.html">Join</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="https://github.com/hgawera/CloudComputing/tree/main/public"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

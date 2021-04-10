@@ -1,0 +1,81 @@
+<!--Cloud Project 2021
+
+The design and code was adapted from TravestyMedia at. https://www.youtube.com/watch?v=p0bGHP-PXD4&ab_channel=TraversyMedia 
+Code added by students in UG6 for the Cloud Computing module can be shown in the document below.
+This is indicated by comments
+
+The javascript involving firebase was adapted from https://firebase.google.com/docs/auth/web/password-auth
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="styles.css">
+    <!--Used from the documentation-->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <!--Used from the documentation-->
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAMsKu6VYYxDgwcyRwfKIj3BlucGCzyijA",
+        authDomain: "cloud-website-306521.firebaseapp.com",
+        projectId: "cloud-website-306521",
+        storageBucket: "cloud-website-306521.appspot.com",
+        messagingSenderId: "130796106359",
+        appId: "1:130796106359:web:43bde9b7708bdeb6d24c72",
+        measurementId: "G-1KZE58BZTE"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+
+    <title>Mooz</title>
+</head>
+<body>
+    <!-- Navbar done by the student-->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Mooz</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="join.html" class="hidden" id="join">Join</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!--Login feature was created by the student-->
+    <div class="center">
+        <h1>Login</h1>
+        <div>
+            <div class="txt_field">
+                <input id="txtEmail" type="email" placeholder="Email" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+
+            <div class="txt_field">
+                <input id="txtPassword" type="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <button id="btnLogin" class="btn btn-light">Login </button>
+            <button id="btnLogout"class="btn btn-secondary hidden">Logout </button>
+            <button id="btnSignup" class="btn btn-light">Sign up </button>
+        </div>
+
+        <script src="./js/auth.js"></script>
+    </div>
+
+    
+</body>
+</html>
