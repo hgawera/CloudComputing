@@ -28,14 +28,14 @@ btnLogin.addEventListener("click", e => {
     const pass = txtPassword.value;
   
     promise = firebase.auth().signInWithEmailAndPassword(email, pass)
-    alert("Logged In!");
+    //alert("Logged In!");
   
     promise.catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
+        alert('Wrong/No password.');
       }
       if (errorCode == 'auth/user-not-found') {
         alert("User does not exist")
@@ -55,7 +55,6 @@ btnSignup.addEventListener('click', e=> {
     const pass = txtPassword.value;
 
     if (pass.length > 4) {
-      alert("User Created")
       firebase.auth().createUserWithEmailAndPassword(email, pass)
     } else {
       alert("Password to Short!")
