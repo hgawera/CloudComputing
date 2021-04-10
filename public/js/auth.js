@@ -1,3 +1,4 @@
+// The login/sign in feature has been adapted from the documentation at https://firebase.google.com/docs/auth/web/password-auth
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
 const btnLogin = document.getElementById("btnLogin");
@@ -6,6 +7,7 @@ const btnSignup = document.getElementById("btnSignup");
 const join = document.getElementById("join");
 const joinA = document.getElementById("joinAbout");
 const joinI = document.getElementById("joinIndex");
+
 
 
 var user = firebase.auth().currentUser;
@@ -23,7 +25,7 @@ console.log(emailVerified);
 
   
 btnLogin.addEventListener("click", e => {
-
+//When the user logs in, certain checks are done
     const email = txtEmail.value;
     const pass = txtPassword.value;
   
@@ -51,6 +53,7 @@ btnLogin.addEventListener("click", e => {
 });
 
 btnSignup.addEventListener('click', e=> {
+  //When the user signs in certain checks are done
     const email = txtEmail.value;
     const pass = txtPassword.value;
 
@@ -88,6 +91,7 @@ btnLogout.addEventListener('click', e => {
   });
 
 firebase.auth().onAuthStateChanged(user => {
+  //When the user logs in or out certain buttons are hidden or not.
       if (user) {
 
         //User logged in
