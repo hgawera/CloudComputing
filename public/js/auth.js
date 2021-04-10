@@ -1,4 +1,10 @@
-// The login/sign in feature has been adapted from the documentation at https://firebase.google.com/docs/auth/web/password-auth
+// Group Project 2021 UG6
+
+// The code in this file is based off the documentation at https://firebase.google.com/docs/auth/web/password-auth
+// https://acidtango.com/thelemoncrunch/how-to-implement-a-video-conference-with-webrtc-and-node/
+
+// No code was copied here.
+
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
 const btnLogin = document.getElementById("btnLogin");
@@ -23,17 +29,16 @@ console.log(email);
 console.log(emailVerified);
   
 
-  
+//When the user logins in certain checks are completed to verify the user.
 btnLogin.addEventListener("click", e => {
-//When the user logs in, certain checks are done
     const email = txtEmail.value;
     const pass = txtPassword.value;
   
     promise = firebase.auth().signInWithEmailAndPassword(email, pass)
     //alert("Logged In!");
   
+    //Checks are listed below, if no errors occur user successfully logs in.
     promise.catch(function(error) {
-      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
@@ -52,16 +57,15 @@ btnLogin.addEventListener("click", e => {
   });
 });
 
+//Similar with previous features, if the user signs up, certain checks are executed.
 btnSignup.addEventListener('click', e=> {
-  //When the user signs in certain checks are done
     const email = txtEmail.value;
     const pass = txtPassword.value;
 
     if (pass.length > 4) {
       firebase.auth().createUserWithEmailAndPassword(email, pass)
-    } else {
-      alert("Password to Short!")
     }
+    //If the user does not enter one of the listed errors then the account is created.
     firebase.auth().createUserWithEmailAndPassword(email, pass).catch(e => {
       switch (e.code) {
         case 'auth/email-already-in-use':
@@ -73,13 +77,14 @@ btnSignup.addEventListener('click', e=> {
         case 'auth/operation-not-allowed':
           alert(`Error during sign up.`);
           break;
-        case 'auth/weak-password':
+        case 'auth/weak-password' && pass.length < 5:
           alert('Password is not strong enough. Add additional characters including special characters and numbers.');
           break;
       }
     });
   });
 
+  //If the user is signed in, the user logs out. The button is hidden if not signed in.
 btnLogout.addEventListener('click', e => {
       //firebase.auth().signOut();
       firebase.auth().signOut().then(() => {
@@ -90,8 +95,8 @@ btnLogout.addEventListener('click', e => {
       
   });
 
+//When the authentication state changed the certain actions are executed. Certain tabs are hidden or shown, as can be seen below.
 firebase.auth().onAuthStateChanged(user => {
-  //When the user logs in or out certain buttons are hidden or not.
       if (user) {
 
         //User logged in
