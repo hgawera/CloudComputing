@@ -13,7 +13,6 @@ const joinA = document.getElementById("joinAbout");
 const joinI = document.getElementById("joinIndex");
 
 
-
 var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 var firstTimeLogin = true;
