@@ -5,7 +5,7 @@
 const roomSelectionContainer = document.getElementById('room-selection-container')
 const roomInputTxt = document.getElementById('room-input')
 let roomInput = 0
-//const connectButton = document.getElementById('connect-button')
+const connectButton = document.getElementById('connect-button')
 const videoChatContainer = document.getElementById('video-chat-container')
 const localVideoComponent = document.getElementById('local-video')
 const remoteVideoComponent = document.getElementById('remote-video')
@@ -49,10 +49,10 @@ const iceServers = {
 }
 
 // Request inputted room
-/*connectButton.addEventListener('click', () => {
+connectButton.addEventListener('click', () => {
   getRoomNumber(roomInputTxt.value)
-  joinRoom(roomInput)
-})*/
+  // joinRoom(roomInput)
+})
 
 
 // New room created
@@ -94,7 +94,8 @@ function showVideoConference() {
   for (let el of info) el.style = 'display: none'
   for (let el of join) el.style = 'display: none'
   for (let el of about) el.style = 'display: none'
-  video[0].style = 'display: block'
+  // video[0].style = 'display: block'
+  videoChatContainer.style = 'display: block'
 }
 
 
