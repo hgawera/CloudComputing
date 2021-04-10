@@ -30,6 +30,17 @@ let isRoomCreator
 let rtcPeerConnection
 let roomId
 
+// These ice servers are used to determine the public IP of the client machine.
+const iceServers = {
+  iceServers: [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' },
+    { urls: 'stun:stun2.l.google.com:19302' },
+    { urls: 'stun:stun3.l.google.com:19302' },
+    { urls: 'stun:stun4.l.google.com:19302' },
+  ],
+}
+
 
 // *************************************
 // Start of code added by us for Cloud Computing 
@@ -62,6 +73,7 @@ function removeRemoteStream() {
 
 // When close message received from the server, close the connection
 socket.on("close", async() => {
+  console.log("Received notification to close connection");
   removeRemoteStream();
 })
 
@@ -81,16 +93,6 @@ function detectDisconnection(){
 
 
 
-// These ice servers are used to determine the public IP of the client machine.
-const iceServers = {
-  iceServers: [
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
-    { urls: 'stun:stun2.l.google.com:19302' },
-    { urls: 'stun:stun3.l.google.com:19302' },
-    { urls: 'stun:stun4.l.google.com:19302' },
-  ],
-}
 
 // Start connection when button clicked
 connectButton.addEventListener('click', () => {

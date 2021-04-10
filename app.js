@@ -17,6 +17,14 @@ app.use('/', express.static('public'))
 module.exports = app;
 
 
+// @ Attributed to Dan Dascalescu
+// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
 // *************************************
 // Start of code added by us for Cloud Computing 
 
@@ -29,7 +37,7 @@ let clientsDict = {};
 async function hostTimer(socket, roomId){
 
   // Timeout for a single call is 5 minutes.
-  await sleep(5000);
+  await sleep(5000 * 60);
   socket.emit("close");
   clientsDict[roomId] = 0;
 
@@ -47,7 +55,7 @@ function getNumberInRoom(roomID){
 
 }
 
-function addDisconnectedListener(socket){
+function addDisconnectListener(socket){
   socket.on("peerDisconnected", (roomID) => {
     console.log("Peer left room " + roomID);
     clientsDict[roomID] = 1;
@@ -60,13 +68,6 @@ function addDisconnectedListener(socket){
 
 
 
-// @ Attributed to Dan Dascalescu
-// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
 
 // Listen for connections
 io.on('connection', (socket) => {
@@ -75,7 +76,7 @@ io.on('connection', (socket) => {
     // Getting people in each room is implemented differently here by us than in the tutorial code.
     roomClients = getNumberInRoom(roomID);
     
-    console.log(roomClients + " people in " + roomID);
+    console.log((roomClients + 1) + " people in " + roomID);
 
     if (roomClients == 0) {
       console.log('Creating room ' + roomID + ' and emitting room_created socket event')
@@ -94,23 +95,23 @@ io.on('connection', (socket) => {
     }
   })
   
-  socket.on('start_call', (roomID) => {
-    console.log('Broadcasting start_call event to peers in room ${roomId}')
-    socket.broadcast.to(roomID).emit('start_call')
+  socket.on('start_call', (roomId) => {
+    console.log(`Broadcasting start_call event to peers in room ${roomId}`)
+    socket.broadcast.to(roomId).emit('start_call')
   })
   socket.on('webrtc_offer', (event) => {
-    console.log('Broadcasting webrtc_offer event to peers in room ${event.roomId}')
-    socket.broadcast.to(event.roomID).emit('webrtc_offer', event.sdp)
+    console.log(`Broadcasting webrtc_offer event to peers in room ${event.roomId}`)
+    socket.broadcast.to(event.roomId).emit('webrtc_offer', event.sdp)
   })
   socket.on('webrtc_answer', (event) => {
-    console.log('Broadcasting webrtc_answer event to peers in room ${event.roomId}')
-    socket.broadcast.to(event.roomID).emit('webrtc_answer', event.sdp)
+    console.log(`Broadcasting webrtc_answer event to peers in room ${event.roomId}`)
+    socket.broadcast.to(event.roomId).emit('webrtc_answer', event.sdp)
   })
   socket.on('webrtc_ice_candidate', (event) => {
-    console.log('Broadcasting webrtc_ice_candidate event to peers in room ${event.roomId}')
-    socket.broadcast.to(event.roomID).emit('webrtc_ice_candidate', event)
+    console.log(`Broadcasting webrtc_ice_candidate event to peers in room ${event.roomId}`)
+    socket.broadcast.to(event.roomId).emit('webrtc_ice_candidate', event)
   })
-  addDisconnectedListener(socket);
+  addDisconnectListener(socket);
 })
 
 
