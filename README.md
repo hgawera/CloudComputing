@@ -4,7 +4,7 @@ Group UG6
 
 Run the code one of two ways:
 
-# 1.\
+## 1.\
 
 git clone https://github.com/hgawera/CloudComputing
 
@@ -12,7 +12,7 @@ npm install\
 npm start
 
 
-# 2.\
+## 2.  
 
 docker run -p 8080:8080 benmarkfrost/cloudcomputing
 
